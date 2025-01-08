@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "assign"
+version = "0.1.0"
+description = ""
+authors = ["KALYANI <22b01a12a0@svecw.edu.in>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+algokit-utils = "^2.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

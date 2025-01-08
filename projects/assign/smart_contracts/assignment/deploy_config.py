@@ -28,9 +28,47 @@ def deploy(
         on_schema_break=algokit_utils.OnSchemaBreak.AppendApp,
         on_update=algokit_utils.OnUpdate.AppendApp,
     )
-    name = "world"
-    response = app_client.hello(name=name)
+
+    # logger.info(f"Deployed calculator with app id:{app_client.app_id}")
+
+    # a = 10
+
+    # response = app_client.increment(a = a)
+    # logger.info(
+    #     f"Called add on {app_spec.contract.name} ({app_client.app_id}) "
+    #     f"with a = {a} , received: {response.return_value}"
+    # )
+
+
+    # a = 26
+    # response = app_client.decrement(a = a)
+    # logger.info(
+    #     f"Called sub on {app_spec.contract.name} ({app_client.app_id}) "
+    #     f"with a = {a} , received: {response.return_value}"
+    # )
+    counter = app_client.get_counter().return_value
+    logger.info(f"Counter value after deployment: {counter}")
+
+    response = app_client.increment()
     logger.info(
-        f"Called hello on {app_spec.contract.name} ({app_client.app_id}) "
-        f"with name={name}, received: {response.return_value}"
+        f"Called increment on {app_spec.contract.name} ({app_client.app_id}), "
+        f"new counter value: {response.return_value}"
+    )
+
+    response = app_client.increment()
+    logger.info(
+        f"Called increment on {app_spec.contract.name} ({app_client.app_id}), "
+        f"new counter value: {response.return_value}"
+    )
+
+    response = app_client.increment()
+    logger.info(
+        f"Called increment on {app_spec.contract.name} ({app_client.app_id}), "
+        f"new counter value: {response.return_value}"
+    )
+
+    response = app_client.decrement()
+    logger.info(
+        f"Called decrement on {app_spec.contract.name} ({app_client.app_id}), "
+        f"new counter value: {response.return_value}"
     )
